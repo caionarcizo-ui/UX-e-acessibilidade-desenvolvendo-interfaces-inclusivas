@@ -2,22 +2,18 @@
    Guardião Digital - Folha de Estilos de Acessibilidade
    ========================================================= */
 
-/* Variáveis de Cores e Tipografia de Alto Contraste */
 :root {
   --bg-color: #f1f5f9;
   --card-bg: #ffffff;
   --primary: #0f2b5c;
-  --primary-light: #1e3a8a;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
   --text-main: #0f172a;
   --text-muted: #334155;
+  --accent: #f59e0b;
   --danger: #dc2626;
   --danger-hover: #b91c1c;
   --font-base: 20px;
 }
 
-/* Reset Básico Acessível */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -32,7 +28,7 @@ body {
   padding: 0;
 }
 
-/* Cabeçalho Principal */
+/* Cabeçalho */
 .app-header {
   background-color: var(--primary);
   color: #ffffff;
@@ -53,14 +49,14 @@ body {
   color: #fbbf24;
 }
 
-/* Container de Conteúdo Centrado */
+/* Container de Conteúdo */
 .container {
   max-width: 650px;
   margin: 0 auto;
   padding: 20px 16px;
 }
 
-/* Cards Informativos Acessíveis */
+/* Cards Informativos */
 .card {
   background-color: var(--card-bg);
   border: 3px solid var(--primary);
@@ -84,45 +80,30 @@ body {
 .card p {
   color: var(--text-muted);
   font-size: 1.15rem;
-  margin: 0 0 16px 0;
+  margin: 0;
 }
 
-/* Botões com Tocabilidade Ampliada */
-.btn {
-  display: block;
-  width: 100%;
-  padding: 16px 20px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-  border: none;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
-/* Botão Amarelo de Ouvir Dica */
-.btn-audio {
-  background-color: var(--accent);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
-.btn-audio:hover, .btn-audio:focus {
-  background-color: var(--accent-hover);
-  outline: 4px solid var(--primary);
-}
-
-/* Área de Ação e Emergência */
+/* Botão de Ajuda */
 .action-zone {
   margin-top: 30px;
   margin-bottom: 20px;
 }
 
+.btn {
+  display: block;
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 1.35rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
 .btn-help {
   background-color: var(--danger);
   color: #ffffff;
-  font-size: 1.35rem;
   border: 3px solid #7f1d1d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
