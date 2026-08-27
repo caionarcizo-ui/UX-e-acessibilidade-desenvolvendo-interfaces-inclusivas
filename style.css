@@ -9,6 +9,7 @@
   --text-main: #0f172a;
   --text-muted: #334155;
   --accent: #f59e0b;
+  --accent-hover: #d97706;
   --danger: #dc2626;
   --danger-hover: #b91c1c;
   --font-base: 20px;
@@ -80,7 +81,33 @@ body {
 .card p {
   color: var(--text-muted);
   font-size: 1.15rem;
-  margin: 0;
+  margin: 0 0 16px 0;
+}
+
+/* Estilo Base dos Botões */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+/* Botão Amarelo de Ouvir Dica */
+.btn-audio {
+  background-color: var(--accent);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-audio:hover, .btn-audio:focus {
+  background-color: var(--accent-hover);
+  outline: 3px solid var(--primary);
 }
 
 /* Botão de Ajuda */
@@ -89,26 +116,15 @@ body {
   margin-bottom: 20px;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  padding: 18px 20px;
-  font-size: 1.35rem;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.2s;
-}
-
 .btn-help {
   background-color: var(--danger);
   color: #ffffff;
+  font-size: 1.35rem;
   border: 3px solid #7f1d1d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-help:hover, .btn-help:focus {
   background-color: var(--danger-hover);
-  outline: 4px solid #7f1d1d;
+  outline: 3px solid #7f1d1d;
 }

@@ -22,6 +22,9 @@
       <div class="card-icon">💬</div>
       <h2>1. Golpe do WhatsApp</h2>
       <p>Se um parente ou amigo pedir dinheiro por mensagem usando um número novo, <strong>não faça pix</strong>. Ligue para o número antigo da pessoa para confirmar.</p>
+      <button class="btn btn-audio" onclick="lerTexto(this.parentElement)">
+        🔊 Ouvir Dica
+      </button>
     </article>
 
     <!-- Dica 2 -->
@@ -29,6 +32,9 @@
       <div class="card-icon">🏦</div>
       <h2>2. Senhas e Bancos</h2>
       <p>O seu banco, a polícia e o INSS <strong>nunca pedem senhas</strong> por telefone ou mensagem. Jamais informe suas senhas para estranhos.</p>
+      <button class="btn btn-audio" onclick="lerTexto(this.parentElement)">
+        🔊 Ouvir Dica
+      </button>
     </article>
 
     <!-- Dica 3 -->
@@ -36,6 +42,9 @@
       <div class="card-icon">📲</div>
       <h2>3. Códigos por SMS</h2>
       <p>Nunca envie para ninguém os números de 6 dígitos que chegam no seu celular por SMS. Esse código é secreto e protege seu aplicativo.</p>
+      <button class="btn btn-audio" onclick="lerTexto(this.parentElement)">
+        🔊 Ouvir Dica
+      </button>
     </article>
 
     <!-- Dica 4 -->
@@ -43,6 +52,9 @@
       <div class="card-icon">🎁</div>
       <h2>4. Prêmios e Promoções</h2>
       <p>Desconfie de mensagens dizendo que você ganhou prêmios, dinheiro fácil ou sorteios sem ter se cadastrado. Não clique em links estranhos.</p>
+      <button class="btn btn-audio" onclick="lerTexto(this.parentElement)">
+        🔊 Ouvir Dica
+      </button>
     </article>
 
     <!-- Botão de Ajuda -->
@@ -53,6 +65,39 @@
     </div>
 
   </main>
+
+  <!-- Script do Ajudador de Voz Humanizado -->
+  <script>
+    function lerTexto(cardElemento) {
+      // Cancela leituras anteriores em andamento
+      window.speechSynthesis.cancel();
+
+      // Extrai apenas o texto explicativo (sem o texto do botão)
+      const textoParaLer = cardElemento.innerText.replace('🔊 Ouvir Dica', '');
+
+      const mensagem = new SpeechSynthesisUtterance(textoParaLer);
+      
+      // Ajustes de entonação para soar mais humano
+      mensagem.lang = 'pt-BR';
+      mensagem.rate = 0.95; // Velocidade próxima à fala humana normal
+      mensagem.pitch = 1.0; // Tom natural da voz
+
+      // Seleciona a melhor voz em português disponível no dispositivo
+      const vozes = window.speechSynthesis.getVoices();
+      const vozHumana = vozes.find(v => v.lang.includes('pt') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Luciana') || v.name.includes('Felipe')));
+
+      if (vozHumana) {
+        mensagem.voice = vozHumana;
+      }
+
+      window.speechSynthesis.speak(mensagem);
+    }
+
+    // Carrega a lista de vozes do dispositivo
+    window.speechSynthesis.onvoiceschanged = () => {
+      window.speechSynthesis.getVoices();
+    };
+  </script>
 
 </body>
 </html>
