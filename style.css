@@ -67,3 +67,28 @@ h2 {
   color: #ffffff;
   border-color: #a94442;
 }
+/* Exemplo de folha de estilo CSS */
+
+/* Estiliza o corpo da página */
+body {
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+  color: #333333;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Estiliza títulos */
+h1 {
+  color: #002b66;
+  text-align: center;
+}
+
+/* Estiliza elementos com a classe .cartao */
+.cartao {
+  background-color: #ffffff;
+  border: 2px solid #002b66;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 15px;
+}
