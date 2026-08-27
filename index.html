@@ -66,37 +66,56 @@
 
   </main>
 
-  <!-- Script do Ajudador de Voz Humanizado -->
+  <!-- Script do Ajudador de Voz Otimizado -->
   <script>
+    let vozesDisponiveis = [];
+
+    // Função para atualizar e filtrar as melhores vozes do sistema
+    function carregarVozes() {
+      vozesDisponiveis = window.speechSynthesis.getVoices();
+    }
+
+    carregarVozes();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = carregarVozes;
+    }
+
     function lerTexto(cardElemento) {
-      // Cancela leituras anteriores em andamento
       window.speechSynthesis.cancel();
 
-      // Extrai apenas o texto explicativo (sem o texto do botão)
-      const textoParaLer = cardElemento.innerText.replace('🔊 Ouvir Dica', '');
+      // Pega apenas o título e a descrição do card
+      const titulo = cardElemento.querySelector('h2') ? cardElemento.querySelector('h2').innerText : '';
+      const paragrafo = cardElemento.querySelector('p') ? cardElemento.querySelector('p').innerText : '';
+
+      // Monta o texto adicionando pontuações para criar pausas naturais na leitura
+      const textoParaLer = `${titulo}. ${paragrafo}`;
 
       const mensagem = new SpeechSynthesisUtterance(textoParaLer);
       
-      // Ajustes de entonação para soar mais humano
+      // Ajustes de entonação natural
       mensagem.lang = 'pt-BR';
-      mensagem.rate = 0.95; // Velocidade próxima à fala humana normal
-      mensagem.pitch = 1.0; // Tom natural da voz
+      mensagem.rate = 0.9;  // Velocidade levemente reduzida para maior clareza
+      mensagem.pitch = 1.05; // Leve ajuste no tom para sonoridade amigável
 
-      // Seleciona a melhor voz em português disponível no dispositivo
-      const vozes = window.speechSynthesis.getVoices();
-      const vozHumana = vozes.find(v => v.lang.includes('pt') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Luciana') || v.name.includes('Felipe')));
+      // Busca prioritária por vozes neurais e naturais do dispositivo (Google, Microsoft, Apple, etc.)
+      const vozHumanizada = vozesDisponiveis.find(v => 
+        v.lang.includes('pt') && 
+        (
+          v.name.includes('Natural') || 
+          v.name.includes('Online') || 
+          v.name.includes('Google') || 
+          v.name.includes('Francisca') || 
+          v.name.includes('Antonio') || 
+          v.name.includes('Luciana')
+        )
+      ) || vozesDisponiveis.find(v => v.lang.includes('pt'));
 
-      if (vozHumana) {
-        mensagem.voice = vozHumana;
+      if (vozHumanizada) {
+        mensagem.voice = vozHumanizada;
       }
 
       window.speechSynthesis.speak(mensagem);
     }
-
-    // Carrega a lista de vozes do dispositivo
-    window.speechSynthesis.onvoiceschanged = () => {
-      window.speechSynthesis.getVoices();
-    };
   </script>
 
 </body>
